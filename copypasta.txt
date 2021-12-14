@@ -1,0 +1,161 @@
+[
+    {
+        "type": "furniture",
+        "id": "f_hco_case_press",
+        "name": "H Co. Case Press",
+        "description": "The H Co. Case Press. A compact, programmable casing press that takes care of extruding, pressing, and shaping of various ammunition casings as part of a larger, automated, munitions-manufacturing process.",
+        "symbol": "J",
+        "color": "red",
+        "move_cost_mod": -1,
+        "coverage": 75,
+        "required_str": -1,
+        "flags": [ "TRANSPARENT" ],
+        "examine_action": "hco_cpress"
+    }
+]
+
+
+:::OTHER NOTES:::
+Shotgun rounds (and other interesting ammo like grenades and rockets) are not currently craftable using the H Co. toolsets. I am looking to add those, but would need to do a bit more calculating (actually I would just need to write it out but I don't feel like making more new constructions and doing all that work currently). Also, for simplicity sake, certain game inconsistencies are ignored. For example the .223 Remington and 5.56x45 NATO do not *actually* share the same casing. The 5.56x45 casing is actually thicker than the .233, to withstand higher pressures even if they can seat the same rounds... This will be another thing on my list of things to do, but I really don't feel like it and would like to integrate any new casings into loot gen given time.
+
+
+:::casings:::
+zinc 20% + copper 80% --> brass 
+zinc  x3 + copper  x1 --> "brass" 0.325L 3.828lbs
+
+"copper" 0.250L 0.88lbs
+"chem_zinc_powder"   0.025L 1.45lbs
+
+Ideally "brass" would be calculated for a specific number of casings unique to each caliber, however I have decided to simply use x100, x50, x10 as the different groupings of casings, with the number of products being decided based on either caliber size, caliber rarity (perhaps based off of damage tier? ie. higher 9mm casing production compared to .50 BMG casing production) or both.
+
+
+:::bullets:::
+lead 94% + tin 4% --> lead alloy
+lead x95 + tin x5 --> "lead_alloy" 0.025L 0.65lbs
+"lead_alloy" + copper x1 --> "hco_bullet" 0.275L 1.55lbs
+
+"lead"   0.025L 0.66lbs (x100)
+"tin"    0.025L 0.44lbs (x100)
+"copper" 0.250L 0.88lbs
+
+I'm rolling with 3 tiers of generic H Co. bullets based on size: small (ie 9mm), medium (ie 7.62x39), large (ie .700 Nitro Express). These will be produced in quantities of either x100, x50, or x10.
+
+
+:::primer:::
+magnesium x10 + nitric acid (1 charge) --> "magnesium_styphnate" 0.108L 0.30lbs
+"magnesium_styphnate" x1 + "lead" x1 --> "hco_primer" 0.133L 0.96lbs (x100)
+
+"magnesium"        0.250L 0.25lbs (x100)
+"chem_nitric_acid" 0.250L 0.83lbs (3 charges)
+"lead"             0.025L 0.66lbs (x100)
+
+"byproducts": [ [ "magnesium", 10 ] ]
+
+I'm torn here on whether or not to use a generic primer. I know that specific primers are in the game, but for ease of design I feel like I should just go with a generic H Co. brand primer. The difference would be in the amount used for recipes, which I realize is not exactly how loading ammunition works, but if I were really trying to be realistic I wouldn't be making this mod now would I. On the other hand, utilizing primers already present in the game allows the mod to better integrate with core content, and opens up more crafting applications (bc if you can only make an item that works exclusively with the mod when it should also be usable in other recipes then sadness...)
+
+
+:::powder:::
+"nitrogen_tank" (4 charges) + "chem_glycerol" x250 --> "nitro_glycerine" 0.000L 0.00lbs (250 ml)
+"nitro_glycerine" x50 + ("chem_carbide" x10 |OR| "magnesium" x10) + "chem_potassium_chloride" x50 --> "hco_powder" 0.023L 0.10lbs (x100)
+
+"nitrogen_tank"           1.500L 5.00lbs (24 charges)
+"chem_glycerol"           0.000L 0.00lbs (x750 ml)
+"chem_carbide"            0.029L 0.14lbs (x100) |OR| "magnesium" 0.250L 0.25lbs (x100)
+"chem_potassium_chloride" 0.038L 0.16lbs (x100)
+"wax"                     0.250L 0.21lbs (only kind of considering this, it seems a bit extra)
+
+Powder is basically kind of the same as above. I don't wanna make a bunch of different powders, but also I know that if I really want integration, that I should. Going with a generic H Co. brand powder for now (fml)...
+
+[
+    {
+        "type": "furniture",
+        "id": "f_id",
+        "name": "f name",
+        "description": "furn desc",
+        "symbol": "X",
+        "color": "color",
+        "move_cost_mod": 1,
+        "coverage": 100,
+        "required_str": 1,
+        "crafting_pseudo_item": "tool",
+        "flags": [ "TAG", "TAG" ],
+        "examine_action": "interaction",
+        "deconstruct": {
+            "items": [
+                { "item": "component", "count": 1 },
+                { "item": "component", "count": 1 }
+            ]
+        }
+    },
+    {
+        "type": "recipe",
+        "result": "id",
+        "id_suffix": "uniq_id",
+        "category": "CC_ELECTRONIC",
+        "subcategory": "CSC_ELECTRONIC_TOOLS",
+        "skill_used": "skill",
+        "skills_required": [ [ "skill", 1 ] ],
+        "difficulty": 1,
+        "time": 100,
+        "reversible": true,
+        "decomp_learn": 1,
+        "book_learn": [ [ "book", 1 ] ],
+        "using": [ [ "mats", 1 ] ],
+        "qualities": [ { "id": "SCREW", "level": 1 } ],
+        "components": [ [ "mats", 1 ] ]
+    },
+    {
+        "type": "construction",
+        "id": "f_id",
+        "description": "build desc",
+        "category": "FURN",
+        "required_skills": [ [ "fabrication", 1 ], [ "fabrication", 1 ] ],
+        "time": 100,
+        "using": [ [ "material", 1 ] ],
+        "qualities": [ [ { "id": "SCREW", "level": 1 } ] ],
+        "components": [ [ [ "furniture_object", 1 ] ] ],
+        "pre_note": "furn description",
+        "pre_special": "check_empty",
+        "post_terrain": "f_id"
+    },
+    {
+        "type": "tool_quality",
+        "id": "QUAL",
+        "name": { "str": "quality" },
+        "usages": [ [ 1, [ "salvage", "inscribe", "cauterize" ] ] ]
+    },
+    {
+        "id": "id",
+        "type": "requirement",
+        "//": "str desc",
+        "tools": [
+          [ [ "crucible", -1 ], [ "crucible_clay", -1 ], [ "iron_pot", -1 ], [ "pan", -1 ], [ "pot_makeshift", -1 ] ],
+          [ [ "water", 1 ], [ "water_clean", -1 ], [ "salt_water", -1 ], [ "water_sewage", -1 ] ],
+          [
+            [ "ceramic_mug", -1 ],
+            [ "ceramic_cup", -1 ],
+            [ "teapot", -1 ],
+            [ "clay_teapot", -1 ],
+            [ "can_food_unsealed", -1 ]
+          ],
+          [ [ "fire", -1 ], [ "hotplate", 2 ], [ "toolset", 2 ] ]
+        ]
+    },
+    {
+        "id": "id",
+        "type": "GENERIC",
+        "category": "other",
+        "name": "str name",
+        "description": "desc",
+        "weight": "7 g",
+        "volume": "50ml",
+        "price": 3000,
+        "price_postapoc": 10,
+        "count": 100,
+        "stack_size": 200,
+        "material": [ "zinc" ],
+        "symbol": "/",
+        "color": "blue",
+        "ammo_type": "components"
+    }
+]
