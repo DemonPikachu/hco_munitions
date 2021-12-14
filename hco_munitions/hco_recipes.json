@@ -688,7 +688,7 @@
         "reversible": false,
 		"qualities": [ { "id": "CHEM", "level": 3 } ],
         "components": [
-			[ [ "nitrogen_tank", -1 ] ],
+			[ [ "nitrogen_tank", 1 ] ],
             [ [ "chem_glycerol", 750 ] ],
             [ [ "chem_carbide", 100 ], [ "magnesium", 100 ] ],
             [ [ "chem_potassium_chloride", 100 ] ]
