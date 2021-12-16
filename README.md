@@ -9,6 +9,8 @@ I'm hoping to accomplish this through the following additions:
   2. Bullet Assembly : shapes lead and copper into bullets
   3. Priming Press : for making primers
   4. Powder Turret : produces and loads modern smokeless powder into rounds. Also the final machine in the assembly line
+  
+Currently, I have implemented everything that encompasses the base functionality of the mod. Further development will be aimed at balancing the crafting between realistic component requirements and enjoyment, as it may be more difficult to collect enough resources to craft ammo than it would otherwise be to simply loot it.
 
 +++ THE FOLLOWING HAS BEEN [REDACTED] EITHER BECAUSE I DO NOT CURRENTLY HAVE THE TIME, THE SKILLS, OR THE PATIENCE. +++
 
