@@ -20,14 +20,46 @@ To begin with, you will need to up your skills, specifically Fabrication, Cookin
 
 Currently, shotgun ammo is not craftable using the H Co. toolset. You may also wish to play with mods that increase the presence of magnesium on the map or allow the refining of magnesium through mining or some other avenue.
 
+=== Development Roadmap ===
 
+1. Ammunition Crafting      	[ ]
+  A. Rifle/SMG/Handgun Ammo 	[X]
+    i. Casings              	[X]
+	ii. Cores					[X]*
+	iii. Powder					[X]*
+	iv. Primer					[X]*
+	v. Variants					[X]
+  B. Shotgun Ammo				[ ]
+    i. Shot types				[ ]
+	ii. Powder					[X]*
+	iii. Primer					[X]*
+	iv. Shells					[ ]
+	v. Variants					[ ]
+  C. Explosives					[ ]
+    i. Grenades					[ ]
+	ii. Rockets					[ ]
+2. Workstations					[ ]
+  A. Placed						[ ]
+    i. Case Press				[X]
+    ii. Bullet Extruder			[X]
+    iii. Priming Press			[X]
+    iv. Powder Turret			[X]
+    v. Shell Spinner			[ ]
+  B. Items						[ ]
+    i. Case Press				[ ]
+    ii. Bullet Extruder			[ ]
+    iii. Priming Press			[ ]
+    iv. Powder Turret			[ ]
+    v. Shell Spinner			[ ]
+3. Buildings					[ ]
+  A. H Co. Factory				[ ]
+  B. Ruined Factory				[ ]
+  C. Basement Setup				[ ]
+  D. H Co. Headquarters			[ ]
+4. NPCs							[ ]
+  A. H Co.						[ ]
 
-
-
-
-
-
-
+===========================
 
 +++ THE FOLLOWING HAS BEEN [REDACTED] EITHER BECAUSE I DO NOT CURRENTLY HAVE THE TIME, THE SKILLS, OR THE PATIENCE. +++
 
